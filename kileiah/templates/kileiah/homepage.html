@@ -1,4 +1,10 @@
-<h1>It's the crazy kileiah homepage thing!</h1>
+{% extends 'kileiah/base.html' %}
 
-<a href="{% url 'caterpillar' %}">Caterpillar Game!</a>
-<a href="{% url 'roomindex' %}">Room Game!</a>
+{% block content %}
+<h1 class="text-center">It's the crazy kileiah homepage thing!</h1>
+
+<div class='text-center'>
+	<a href="{% url 'caterpillar' %}"><h2>Caterpillar Game!</h2></a>
+	<a href="{% url 'roomindex' %}"><h2>Room Game!</h2></a>
+</div>
+{% endblock %}

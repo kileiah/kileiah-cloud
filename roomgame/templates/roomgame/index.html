@@ -1,3 +1,5 @@
+{% extends 'kileiah/base.html' %}
+{% block content %}
 	<h1>The Amazing Game in Which One Escapes a Room</h1>
 	{{message}}
 	{% if has_escaped %}
@@ -19,3 +21,4 @@
 			<input type="submit" name='reset' value='Reset'>
 		</form>
 	{% endif %}
+{% endblock %}
