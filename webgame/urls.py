@@ -20,4 +20,5 @@ urlpatterns = [
 	url(r'^caterpillar/', include('butterfly.urls')),
 	url(r'^room/', include('roomgame.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('kileiah.urls'))
 ]
