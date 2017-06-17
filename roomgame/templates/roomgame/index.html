@@ -1,0 +1,21 @@
+	<h1>The Amazing Game in Which One Escapes a Room</h1>
+	{{message}}
+	{% if has_escaped %}
+		<h1>YOU ESCAPE!</h1>
+		<form method='POST'>
+			{% csrf_token %}
+			<input type="submit" name='reset' value='Reset'>
+		</form>
+		</form>
+	{% else %}
+		<form method='POST'>
+			{% csrf_token %}
+			{% if has_name %}
+				<input type='textbox' name='action'>
+			{% else %}
+				<input type='textbox' name='name'>
+			{% endif %}
+			<input type="submit" title="Submit"><br>
+			<input type="submit" name='reset' value='Reset'>
+		</form>
+	{% endif %}
