@@ -7,6 +7,7 @@ from .gamelogic import GameLevel
 
 def index(request):
     level = GameLevel(request.session)
+    request.session.set_expiry(300)
     if request.method == 'POST':
         if 'reset' in request.POST:
             request.session.flush()
