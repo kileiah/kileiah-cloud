@@ -1,5 +1,10 @@
 {% extends 'kileiah/base.html' %}
 {% block content %}
+<style type="text/css">
+#submitbox {
+	text-align: center;
+}
+</style>
 	<h1 class="text-center">the amazing game in which one escapes a room</h1>
 	{% if has_escaped %}
 		<h3 class="text-center">{{message}}</h3>
@@ -8,7 +13,9 @@
 		<br>
 		<form method='POST'>
 			{% csrf_token %}
-			<input type="submit" name='reset' value='reset game'>
+			<div id="submitbox">
+				<input type="submit" name='reset' value='reset game'>
+			</div>
 		</form>
 		</form>
 	{% else %}
@@ -17,16 +24,23 @@
 			{% if has_name %}
 				<h3 class="text-center">{{message}}</h3><br>
 				<p class="text-center">what do you do?</p>
-				<input type='textbox' name='action'>
+				<div id="submitbox">
+					<input type='textbox' name='action'>
+					<input type="submit" name='submit' value='submit'>
+				</div>
 			{% else %}
 				<p class="text-center">hmm... it appears you've found yourself in a room with a locked door! <br>and you're late for a party! <br><br>the kind of party with nice people that you like, <br>and there'll be snacks you enjoy. <br><br>you don't want to miss it! <br>but you're stuck!<br>oh no!
 				<br><br>you've got to figure out how to get out of the room. </p>
 				<h3 class="text-center">{{message}}</h3><br>
-				<input type='textbox' name='name'>
+				<div id="submitbox">
+					<input type='textbox' name='name'>
+					<input type="submit" name='submit' value='submit'>
+				</div>
 			{% endif %}
-			<input type="submit" name='submit' value='submit'>
-			<br><br>
-			<input type="submit" name='reset' value='reset game'>
+			<div id="submitbox">
+				<br><br>
+				<input type="submit" name='reset' value='reset game'>
+			</div>
 		</form>
 	{% endif %}
 {% endblock %}

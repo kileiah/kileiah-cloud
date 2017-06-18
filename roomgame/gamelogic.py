@@ -150,8 +150,11 @@ Have a great time at the party {}!!!""".format(username))
 		if self.action == "think":
 			return self.action_list[self.action]
 		elif self.action == "look":
-			self.session["seen_key"] = True
-			return self.action_list[self.action]
+			if not self.session.get("seen_key", False):
+				self.session["seen_key"] = True
+				return self.action_list[self.action]
+			else:
+				return "you remember seeing a key on the floor. maybe you should pick it up!"
 		elif self.action == "sit":
 			if not self.session.get("sitting", False):
 				self.session["sitting"] = True
