@@ -138,7 +138,7 @@ Have a great time at the party {}!!!""".format(username))
 		for x in self.session['name']:
 			val += ord(x)
 		val = val % len(self.silly_greeting)
-		return "it looks like your name is {}!\n".format(self.session['name']) + self.silly_greeting[val]
+		return "it looks like your name is {}! \n\n".format(self.session['name']) + self.silly_greeting[val]
 
 	def get_action_msg(self):
 		if 'name' not in self.session:
