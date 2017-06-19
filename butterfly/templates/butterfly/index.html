@@ -1,23 +1,27 @@
 {% extends 'kileiah/base.html' %}
 {% block content %}
-	<h1>You are a hungry caterpillar.</h1>
-	<h2>Time to eat!</h2>
-    <p>Pick a thing to eat.</p>
+	<h1>you are a hungry caterpillar</h1>
+	<h2>time to eat!</h2>
+    <h3>pick a thing to eat:</h3>
+        <form method='POST'>
+        {% csrf_token %}
+            <button type='submit' name='food' value="potato"></button>
+            <button type='submit' name='food' value="steel"></button>
+            <button type='submit' name='food' value="coconut"></button>
+            <button type='submit' name='food' value="banana"></button> 
+            <button type='submit' name='food' value="horseradish"></button>                        
+        </form>
     {% if eaten %}
-    	<h1>You have eaten!</h1>
-    	<h2>The following food items are in your belly!</h2>
+    	<h3>you have eaten the following food:</h3>
     	<ul>
     	{% for fud in food %}
     		<li>{{fud}}</li>
     	{% endfor %}
     	</ul>
-
-    {% else %}
-    	<h1>You are very hungry.</h1>
-    	<form method='POST'>
-    	{% csrf_token %}
-    		<button type='submit' name='food' value='potato'><p>potato</p></button>
-    		<button type='submit' name='food' value='steel'><p>steel</p></button>
-    	</form>
     {% endif %}
+    <form method='POST'>
+        {% csrf_token %}
+        <br>
+        <input type="submit" name='reset' value='begin again'>
+    </form>
 {% endblock %}

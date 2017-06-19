@@ -7,6 +7,7 @@ def index(request):
     context = {
         'eaten': False
     }
+    request.session.set_expiry(100)
     if request.method == 'POST':
         food = request.POST.get('food', None)
         if food is not None:
@@ -15,7 +16,8 @@ def index(request):
                 request.session['food'] = []
             request.session['food'].append(food)
             print(request.session.__dict__)
-    request.session.set_expiry(5)
+        elif 'reset' in request.POST:
+            request.session.flush()
     if request.session.get('eaten', False):
         context['eaten'] = True
         context['food'] = request.session['food']
